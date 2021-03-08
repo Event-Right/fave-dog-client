@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import SignIn from '../Signup_Login/SignIn.js';
+import SignUp from '../Signup_Login/SignUp.js';
 
-export default class HomePage extends Component {
+export default class Home extends Component {
   render() {
     return (
       <div className="credentials">
-        <input className="input">Username:</input>
-        <input className="input">Password:</input>
-        <button type="submit">Log In</button>
-        <button type="submit">Create New Account</button>
+        <SignIn />
+        <SignUp />
       </div>
     );
   }
