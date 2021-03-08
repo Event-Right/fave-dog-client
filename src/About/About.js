@@ -8,7 +8,7 @@ export default class About extends Component {
           <h3>Eion Nelson</h3>
         </div>
         <div>
-          <h3>Edomond Zhan</h3>
+          <h3>Edmond Zhan</h3>
         </div>
         <div>
           <h3>Minh Ngo</h3>

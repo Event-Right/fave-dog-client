@@ -4,7 +4,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 
-// import { getUserFromLocalStorage, putUserInLocalStorage } from './local-storage-utils.js';
+import {
+  getUserFromLocalStorage,
+  putUserInLocalStorage,
+} from './local-storage-utils.js';
 
 import Header from './Components/Header';
 import Home from './Home/Home';
@@ -14,35 +17,35 @@ import About from './About/About';
 
 export default class App extends Component {
   state = {
-    user: [],
-    // getUserFromLocalStorage()
+    user: getUserFromLocalStorage(),
   };
 
-  // handleUserChange = (user) => {
-  //   this.setState({ user });
+  handleUserChange = (user) => {
+    this.setState({ user });
 
-  //   putUserInLocalStorage(user);
-  // }
+    putUserInLocalStorage(user);
+  };
 
-  // handleLogOut = () => {
-  //   this.handleUserChange();
-
-  // }
+  handleLogOut = () => {
+    this.handleUserChange();
+  };
 
   render() {
     const { user } = this.state;
     return (
       <div>
         <Router>
-          <Header
-            user={user}
-            // handleLogOut={this.handleLogOut}
-          />
+          <Header user={user} handleLogOut={this.handleLogOut} />
           <Switch>
             <Route
               path="/"
               exact
-              render={(routerProps) => <Home {...routerProps} />}
+              render={(routerProps) => (
+                <Home
+                  handleUserChange={this.handleUserChange}
+                  {...routerProps}
+                />
+              )}
             />
             <Route
               path="/favorites"

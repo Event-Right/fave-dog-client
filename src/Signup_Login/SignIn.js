@@ -1,33 +1,32 @@
 import React, { Component } from 'react';
 import { loginUser } from '../Utils/Api_Utils.js';
-import style from './SignIn.module.css';
-export default class LoginPage extends Component {
+export default class SignIn extends Component {
   state = {
-    username: '',
+    email: '',
     password: '',
   };
 
-  handleusername = (e) => this.setState({ username: e.target.value });
+  handleEmail = (e) => this.setState({ email: e.target.value });
 
   handlePassword = (e) => this.setState({ password: e.target.value });
 
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    const user = await loginUser(this.state.username, this.state.password);
+    const user = await loginUser(this.state.email, this.state.password);
 
     this.props.handleUserChange(user);
-    this.props.history.push('./todos');
+    this.props.history.push('./search');
   };
 
   render() {
     return (
-      <div className={style.signin}>
+      <div>
         <h>Log In:</h>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Username:
-            <input value={this.state.username} onChange={this.handleusername} />
+            Email:
+            <input value={this.state.email} onChange={this.handleEmail} />
           </label>
           <label>
             Password:
