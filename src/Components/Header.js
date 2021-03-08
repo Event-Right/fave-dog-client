@@ -11,6 +11,8 @@ export default class Header extends Component {
                 <NavLink to="/search"><p>Search</p></NavLink> 
                 <NavLink to="/favorites"><p>favorites</p></NavLink> 
                         <button onClick={this.props.handleLogOut}>Sign Out</button>
+                <NavLink to="/about"><p>about</p></NavLink>
+                
                 {/* {
                     this.props.user && this.props.user.token &&
                     <>

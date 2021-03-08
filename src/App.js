@@ -14,6 +14,7 @@ import Header from './Components/Header';
 import Home from './Home/Home';
 import Favorites from './Favorites/Favorites';
 import SearchPage from './SearchPage/SearchPage'
+import About from './About/About';
 
 
 
@@ -67,7 +68,13 @@ export default class App extends Component {
                                 user={user}
                                 {...routerProps} />} 
                         />
-                    </Switch>
+                        <Route 
+                            path="/about" 
+                            exact
+                            render={(routerProps) =>
+                            <About {...routerProps} />}
+                        />
+                      </Switch>
                 </Router>
             </div>
         )
