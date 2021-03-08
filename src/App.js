@@ -17,13 +17,11 @@ import SearchPage from './SearchPage/SearchPage'
 import About from './About/About';
 
 
-
-
 export default class App extends Component {
   state = {
     user: [],
-      // getUserFromLocalStorage()
-  }
+    // getUserFromLocalStorage()
+  };
 
   // handleUserChange = (user) => {
   //   this.setState({ user });
@@ -33,7 +31,7 @@ export default class App extends Component {
 
   // handleLogOut = () => {
   //   this.handleUserChange();
-    
+
   // }
 
   render() {
