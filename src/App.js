@@ -4,16 +4,16 @@ import {
     Route, 
     Switch,
 } from 'react-router-dom';
-import PrivateRoute from './Components/PrivateRoute';
+// import PrivateRoute from './Components/PrivateRoute';
 
 import './App.css';
 
-import { getUserFromLocalStorage, putUserInLocalStorage } from './local-storage-utils.js';
+// import { getUserFromLocalStorage, putUserInLocalStorage } from './local-storage-utils.js';
 
 import Header from './Components/Header';
 import Home from './Home/Home';
 import Favorites from './Favorites/Favorites';
-import Search_Page from './SearchPage/Search_Page'
+import SearchPage from './SearchPage/SearchPage'
 
 
 
@@ -41,7 +41,7 @@ export default class App extends Component {
             <div>
                 <Router>
                   <Header
-                    // user={user}
+                    user={user}
                     // handleLogOut={this.handleLogOut}
                     />
                     <Switch>
@@ -50,21 +50,21 @@ export default class App extends Component {
                             exact
                             render={(routerProps) => <Home {...routerProps} />} 
                         />
-                        <PrivateRoute 
+                        <Route 
                             path="/favorites" 
                             exact
-                            // token={user && user.token}
+                            token={user && user.token}
                             render={(routerProps) =>
                             <Favorites
-                                // user={user}
+                                user={user}
                                 {...routerProps} />} 
                         />
                         <Route 
                             path="/search" 
                             exact
                             render={(routerProps) =>
-                            <Search_Page
-                                // user={user}
+                            <SearchPage
+                                user={user}
                                 {...routerProps} />} 
                         />
                     </Switch>
