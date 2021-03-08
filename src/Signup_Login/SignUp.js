@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-import { signUpUser } from '../Api_Utils.js';
+import { signUpUser } from '../Utils/Api_Utils.js';
+import style from './SignUp.module.css';
 export default class SignUpPage extends Component {
   state = {
-    email: '',
+    username: '',
     password: '',
   };
 
-  handleEmail = (e) => this.setState({ email: e.target.value });
+  handleusername = (e) => this.setState({ username: e.target.value });
 
   handlePassword = (e) => this.setState({ password: e.target.value });
 
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    const user = await signUpUser(this.state.email, this.state.password);
+    const user = await signUpUser(this.state.username, this.state.password);
 
     this.props.handleUserChange(user);
     this.props.history.push('./todos');
@@ -21,12 +22,12 @@ export default class SignUpPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className={style.signup}>
         <h>New User? Sign up here!</h>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Email:
-            <input value={this.state.email} onChange={this.handleEmail} />
+            Username:
+            <input value={this.state.username} onChange={this.handleusername} />
           </label>
           <label>
             Password:

@@ -17,6 +17,10 @@ export default class Header extends Component {
             <p>Favorites</p>
           </NavLink>
           <button onClick={this.props.handleLogOut}>Sign Out</button>
+          <NavLink to="/about">
+            <p>About</p>
+          </NavLink>
+
           {/* {
                     this.props.user && this.props.user.token &&
                     <>
