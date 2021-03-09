@@ -8,9 +8,13 @@ export async function searchEvents(search) {
   return location.body;
 }
 
-export async function getEvents() {
-  const event = await request.get(`${URL}/dogs`); //
-  return event.body;
+export async function getDogs() {
+  const Dogslist = await request.get(`${URL}/dogs`); 
+  return Dogslist.body;
+}
+export async function getDogHouse(id) {
+  const DogHouse = await request.get(`${URL}/dogs/${id}`); 
+  return DogHouse.body;
 }
 
 export async function logInUser(email, password) {

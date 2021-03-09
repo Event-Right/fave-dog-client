@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { searchEvents, getEvents } from '../Utils/Api_Utils.js'
+import { searchEvents, getDogs } from '../Utils/Api_Utils.js'
 
 export default class Search_Page extends Component {
     state = {
         locations: [],
-        search: ''
+        search: '',
+        id: '',
     }
 
     handleSearchChange = e => this.setState({ search: e.target.value })
@@ -21,7 +22,7 @@ export default class Search_Page extends Component {
     }
 
     componentDidMount = async () => {
-        const locations = await getEvents();
+        const locations = await getDogs();
         this.setState({
             locations: locations
         })
