@@ -3,13 +3,13 @@ import request from 'superagent';
 const URL = 'https://hidden-fjord-82693.herokuapp.com';
 
 export async function searchEvents(search) {
-  const event = await request.get(`${URL}/events?search=${search}`);
-  console.log(event);
-  return event.body.results;
+  const location = await request.get(`${URL}/dogs?location=${search}`);
+  console.log(location.body.results);
+  return location.body;
 }
 
 export async function getEvents() {
-  const event = await request.get(`${URL}/events`); //
+  const event = await request.get(`${URL}/dogs`); //
   return event.body;
 }
 

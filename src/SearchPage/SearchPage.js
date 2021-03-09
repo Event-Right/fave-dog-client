@@ -1,64 +1,67 @@
-import React, { Component } from 'react';
-import { searchEvents, getEvents, addFavorite } from '../Utils/Api_Utils.js';
+import React, { Component } from 'react'
+import { searchEvents, getEvents } from '../Utils/Api_Utils.js'
 
 export default class Search_Page extends Component {
-  state = {
-    events: [],
-    search: '',
-  };
+    state = {
+        locations: [],
+        search: ''
+    }
 
-  componentDidMount = async () => {
-    const events = await getEvents();
-    this.setState({
-      events: events.events,
-    });
-  };
+    handleSearchChange = e => this.setState({ search: e.target.value })
 
-  handleSearchChange = (e) => this.setState({ search: e.target.value });
+    handleSubmit = async e => {
+        e.preventDefault();
 
-  handleSubmit = async (e) => {
-    e.preventDefault();
+        await this.makeSearch()
+    }
 
-    await this.makeSearch();
-  };
+    makeSearch = async () => {
+        const locations = await searchEvents(this.state.search);
+        this.setState({ locations });
+    }
 
-  makeSearch = async () => {
-    const events = await searchEvents(this.state.search);
-    this.setState({ events });
-  };
+    componentDidMount = async () => {
+        const locations = await getEvents();
+        this.setState({
+            locations: locations
+        })
+    }
 
-  handleFavorite = async (event) => {
-    await addFavorite(
-      {
-        name: event.name,
-        description: event.description,
-      },
-      this.props.user.token
-    );
-  };
+    // handleFavoritesClick = async (dbCocktail) => {
+    //     console.log(dbCocktail);
+    //     await addFavorite({
+    //         name: dbCocktail.strDrink,
+    //         glass: dbCocktail.strGlass,
+    //         image: dbCocktail.strDrinkThumb,
+    //         drink_id: dbCocktail.idDrink,
+    //     }, this.props.user.token);
+        
+    //     await this.mountFavorites();
+    // }
 
-  render() {
-    console.log(this.state.events);
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input value={this.state.search} onChange={this.handleSearchChange} />
-          <button>Search</button>
-        </form>
-        <div className="events">
-          {this.state.events.map((event) => (
+    render() {
+        console.log(this.state.locations)
+        return (
             <div>
-              <img alt={event.name} src={event.image_url} />
-              <h2>{event.name}</h2>
-              <p>{event.description}</p>
-              <p>{event.location.zip_code}</p>
-              <button onClick={() => this.handleFavorite(event)}>
-                Add to Favorite!
-              </button>
+                <form onSubmit={this.handleSubmit}>
+                    <input value={this.state.search} onChange={this.handleSearchChange} />
+                    <button>Search</button>
+                </form>
+                <div className='events'>
+                    {
+                        this.state.locations.map( (location, i) =>
+                            <div key={`${location.name}-${i}`} >
+                                <h2>{location.name}</h2>
+                                <img alt={location.name} src={location.image_url} />
+                                <p>{location.rating}</p>
+                                
+                            </div>
+                        )
+                    }
+                </div>
             </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
+        )
+    }
 }
+ 
+// onClick={() => this.handleFavoritesClick(location)}

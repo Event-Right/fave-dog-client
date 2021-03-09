@@ -27,7 +27,7 @@ class SignIn extends Component {
     // }
     return (
       <div>
-        <h>Log In</h>
+        <h3>Sign In</h3>
         <form onSubmit={this.handleSubmit}>
           <label>
             Email:
