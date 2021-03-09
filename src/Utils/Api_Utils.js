@@ -2,13 +2,13 @@ import request from 'superagent';
 
 const URL = 'https://hidden-fjord-82693.herokuapp.com';
 
-export async function searchEvents(search) {
+export async function searchLocations(search) {
   const location = await request.get(`${URL}/dogs?location=${search}`);
-  console.log(location.body.results);
+  
   return location.body;
 }
 
-export async function getEvents() {
+export async function getLocations() {
   const event = await request.get(`${URL}/dogs`); //
   return event.body;
 }
@@ -30,13 +30,13 @@ export async function signUpUser(email, password) {
 
   return response.body;
 }
-export async function addFavorite(event, token) {
-  const { body } = await request
+export async function addFavorite(location, token) {
+  console.log(token, 'token')
+  const response = await request
     .post(`${URL}/api/favorites`)
     .set('Authorization', token)
-    .send(event);
-
-  return body;
+    .send(location);
+  return response.body;
 }
 
 export async function getFavorites(token) {

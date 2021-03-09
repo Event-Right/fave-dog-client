@@ -1,12 +1,27 @@
 import React, { Component } from 'react'
-import { searchEvents, getEvents } from '../Utils/Api_Utils.js'
+import { getLocations, addFavorite, getFavorites, searchLocations } from '../Utils/Api_Utils.js'
 
 export default class Search_Page extends Component {
     state = {
         locations: [],
+        favorites: [],
         search: ''
     }
 
+    
+  componentDidMount = async () => {
+        const locations = await getLocations();
+        this.setState({
+            locations: locations
+        })
+  }
+    
+     fetchFavorites = async () => {
+        const favorites = await getFavorites(this.props.user.token)
+        console.log(this.state)
+        this.setState({ favorites });
+     }
+    
     handleSearchChange = e => this.setState({ search: e.target.value })
 
     handleSubmit = async e => {
@@ -16,31 +31,47 @@ export default class Search_Page extends Component {
     }
 
     makeSearch = async () => {
-        const locations = await searchEvents(this.state.search);
+        const locations = await searchLocations(this.state.search);
         this.setState({ locations });
     }
 
-    componentDidMount = async () => {
-        const locations = await getEvents();
-        this.setState({
-            locations: locations
-        })
+
+    handleFavoritesClick = async (faveDog) => {
+        console.log(faveDog, 'favedog');
+        console.log(this.props.user.token)
+        await addFavorite({
+            name: faveDog.name, 
+            categories: faveDog.categories, 
+            review_count: faveDog.review_count, 
+            price: faveDog.price, 
+            transactions: faveDog.transactions, 
+            url: faveDog.url, 
+            image_url: faveDog.image_url, 
+            is_closed: faveDog.is_closed, 
+            rating: faveDog.rating,
+            distance: faveDog.distance, 
+            display_phone: faveDog.display_phone,  
+            city: faveDog.location.city,
+            zip_code: faveDog.location.zip_code,
+            state: faveDog.location.state,
+            display_address: faveDog.location.display_address
+           
+        }, this.props.user.token);
+        
+        await this.fetchFavorites();
     }
 
-    // handleFavoritesClick = async (dbCocktail) => {
-    //     console.log(dbCocktail);
-    //     await addFavorite({
-    //         name: dbCocktail.strDrink,
-    //         glass: dbCocktail.strGlass,
-    //         image: dbCocktail.strDrinkThumb,
-    //         drink_id: dbCocktail.idDrink,
-    //     }, this.props.user.token);
+    isAFavorite = (location) => {
+        if (!this.props.user.token) return true;
         
-    //     await this.mountFavorites();
-    // }
+       const isIsAFavorite = this.state.favorites.find(favorite => favorite.name === location.name);
+
+        return Boolean(isIsAFavorite);
+    }
 
     render() {
-        console.log(this.state.locations)
+        console.log(this.props, 'props')
+        console.log(this.state, 'state')
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -54,6 +85,12 @@ export default class Search_Page extends Component {
                                 <h2>{location.name}</h2>
                                 <img alt={location.name} src={location.image_url} />
                                 <p>{location.rating}</p>
+                                <p>
+                                    {this.isAFavorite(location)
+                                        ? 'You love this dog'
+                                        : <button onClick={() => this.handleFavoritesClick(location)} >add to favorites</button>
+                                    }
+                                </p>
                                 
                             </div>
                         )
@@ -64,4 +101,3 @@ export default class Search_Page extends Component {
     }
 }
  
-// onClick={() => this.handleFavoritesClick(location)}
