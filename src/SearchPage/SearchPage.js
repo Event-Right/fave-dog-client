@@ -1,19 +1,27 @@
 import React, { Component } from 'react'
 import { getLocations, addFavorite, getFavorites, searchLocations } from '../Utils/Api_Utils.js'
+import Spinner from '../Components/Spinner.js';
 
 export default class Search_Page extends Component {
     state = {
         locations: [],
         favorites: [],
-        search: ''
+        search: '',
+        loading: false
     }
 
     
   componentDidMount = async () => {
-        const locations = await getLocations();
         this.setState({
-            locations: locations
+            loading: true,
         })
+        const locations = await getLocations();
+        setTimeout(() => {
+            this.setState({
+                loading: false,
+                locations: locations
+            })
+        }, 1500);
   }
     
      fetchFavorites = async () => {
@@ -78,6 +86,7 @@ export default class Search_Page extends Component {
                     <input value={this.state.search} onChange={this.handleSearchChange} />
                     <button>Search</button>
                 </form>
+                { this.state.loading && <Spinner />}
                 <div className='events'>
                     {
                         this.state.locations.map( (location, i) =>
