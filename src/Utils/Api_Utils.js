@@ -13,7 +13,7 @@ export async function getEvents() {
   return body;
 }
 
-export async function loginUser(email, password) {
+export async function logInUser(email, password) {
   const response = await request.post(`${URL}/auth/signin`).send({
     email: email,
     password: password,

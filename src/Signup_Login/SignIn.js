@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { loginUser } from '../Utils/Api_Utils.js';
-export default class SignIn extends Component {
+import { logInUser } from '../Utils/Api_Utils.js';
+export default class LoginPage extends Component {
   state = {
     email: '',
     password: '',
@@ -13,10 +13,10 @@ export default class SignIn extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    const user = await loginUser(this.state.email, this.state.password);
+    const user = await logInUser(this.state.email, this.state.password);
 
     this.props.handleUserChange(user);
-    this.props.history.push('./search');
+    this.props.history.push('/search');
   };
 
   render() {

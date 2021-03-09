@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import PrivateRoute from './Components/PrivateRoute';
+import PrivateRoute from './Components/PrivateRoute.js';
 
 import './App.css';
 
@@ -31,6 +31,7 @@ export default class App extends Component {
   };
 
   render() {
+    console.log(this.state);
     const { user } = this.state;
     return (
       <div>
@@ -47,7 +48,7 @@ export default class App extends Component {
                 />
               )}
             />
-            <Route
+            <PrivateRoute
               path="/favorites"
               exact
               token={user && user.token}

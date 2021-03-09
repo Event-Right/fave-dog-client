@@ -6,8 +6,8 @@ export default class Home extends Component {
   render() {
     return (
       <div className="credentials">
-        <SignIn />
-        <SignUp />
+        <SignIn handleUserChange={this.props.handleUserChange} />
+        <SignUp handleUserChange={this.props.handleUserChange} />
       </div>
     );
   }

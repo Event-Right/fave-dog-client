@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { signUpUser } from '../Utils/Api_Utils.js';
-export default class SignUp extends Component {
+import { withRouter } from 'react-router-dom';
+class SignUp extends Component {
   state = {
     email: '',
     password: '',
@@ -16,10 +17,14 @@ export default class SignUp extends Component {
     const user = await signUpUser(this.state.email, this.state.password);
 
     this.props.handleUserChange(user);
-    this.props.history.push('./search');
+    this.props.history.push('/search');
   };
 
   render() {
+    console.log(this.props.history);
+    // if (this.state.user === true) {
+    //   return <Redirect to="/search" />;
+    // }
     return (
       <div>
         <h>New User? Sign up here!</h>
@@ -38,3 +43,5 @@ export default class SignUp extends Component {
     );
   }
 }
+
+export default withRouter(SignUp);
