@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
-
+import { getFavorites } from '../Utils/Api_Utils.js';
 export default class favorites extends Component {
+  state = {
+    favorites: [],
+  };
+
+  componentDidMount = async () => {
+    const favorites = await getFavorites(this.props.token);
+    this.setState({
+      favorites: favorites,
+    });
+  };
+
   render() {
     return (
       <div>

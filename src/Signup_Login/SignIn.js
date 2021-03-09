@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { logInUser } from '../Utils/Api_Utils.js';
-export default class LoginPage extends Component {
+import { withRouter } from 'react-router-dom';
+class SignIn extends Component {
   state = {
     email: '',
     password: '',
@@ -20,9 +21,13 @@ export default class LoginPage extends Component {
   };
 
   render() {
+    console.log(this.props.history);
+    // if (this.state.user === true) {
+    //   return <Redirect to="/search" />;
+    // }
     return (
       <div>
-        <h>Log In:</h>
+        <h>Log In</h>
         <form onSubmit={this.handleSubmit}>
           <label>
             Email:
@@ -32,9 +37,11 @@ export default class LoginPage extends Component {
             Password:
             <input value={this.state.password} onChange={this.handlePassword} />
           </label>
-          <button>Login</button>
+          <button>Submit</button>
         </form>
       </div>
     );
   }
 }
+
+export default withRouter(SignIn);
