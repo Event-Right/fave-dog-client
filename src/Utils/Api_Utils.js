@@ -46,3 +46,11 @@ export async function getFavorites(token) {
 
   return body;
 }
+
+export async function deleteFavorites(token, id) {
+  const { body } = await request
+    .delete(`${URL}/api/favorites/${id}`)
+    .set('Authorization', token);
+
+    return body;
+}
