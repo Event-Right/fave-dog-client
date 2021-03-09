@@ -1,19 +1,16 @@
 .headerContainerDiv {
-    height: 50px;
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    
+  height: 50px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
 }
 
 .linkContainerDiv {
-
-    
 }
 
 .linkContainerDiv p {
-    display: inline;
-    
-    margin-left: 10px;
-    margin-right: 10px;
+  display: inline;
+
+  margin-left: 10px;
+  margin-right: 10px;
 }
