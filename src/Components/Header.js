@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link, } from 'react-router-dom';
 import style from './Header.module.css';
 
 export default class Header extends Component {
@@ -16,17 +16,10 @@ export default class Header extends Component {
           <NavLink to="/favorites">
             <p>Favorites</p>
           </NavLink>
-          <button onClick={this.props.handleLogOut}>Sign Out</button>
+          <Link to= "/"><button onClick={this.props.handleLogOut}>Sign Out</button></Link>
           <NavLink to="/about">
             <p>About</p>
           </NavLink>
-
-          {/* {
-                    this.props.user && this.props.user.token &&
-                    <>
-                        
-                    </>
-                } */}
         </div>
       </div>
     );

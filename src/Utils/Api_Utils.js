@@ -1,7 +1,9 @@
 import request from 'superagent';
 
+
 const URL = 'https://hidden-fjord-82693.herokuapp.com';
 // 'https://hidden-fjord-82693.herokuapp.com';
+
 
 export async function searchLocations(search, sortBy) {
   const location = await request.get(`${URL}/dogs?location=${search}&sort_by=${sortBy}`);

@@ -31,7 +31,7 @@ export default class App extends Component {
   handleUserChange = (user) => {
     putUserInLocalStorage(user);
     const user1 = getUserFromLocalStorage();
-    console.log(user1)
+
     this.setState({ user: user1 }
 )  };
 
@@ -41,10 +41,11 @@ export default class App extends Component {
       id: '',
       token: '',
     });
+
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     const { user } = this.state;
     return (
       <div className='container'>
@@ -72,6 +73,7 @@ export default class App extends Component {
             <Route
               path="/search"
               exact
+              token={ user && user.token }
               render={(routerProps) => (
                 <SearchPage handleID={this.handleID} user={user} {...routerProps} />
               )}
