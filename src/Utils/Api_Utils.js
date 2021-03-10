@@ -1,6 +1,8 @@
 import request from 'superagent';
 
-const URL = 'http://localhost:3000';
+
+const URL = 'https://hidden-fjord-82693.herokuapp.com';
+// 'https://hidden-fjord-82693.herokuapp.com';
 
 
 export async function searchLocations(search, sortBy) {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
 import PrivateRoute from './Components/PrivateRoute.js';
 
 import './App.css';
@@ -22,6 +22,7 @@ export default class App extends Component {
     user: getUserFromLocalStorage(),
     businessId: '',
   };
+  
   handleID = (id) =>{
     this.setState({businessId: id});
     putIdInLocalStorage();
@@ -30,19 +31,24 @@ export default class App extends Component {
   handleUserChange = (user) => {
     putUserInLocalStorage(user);
     const user1 = getUserFromLocalStorage();
-    this.setState({user: user1})
-  };
-  
+
+    this.setState({ user: user1 }
+)  };
+
   handleLogOut = () => {
-    this.handleUserChange('');
-    
+    this.handleUserChange({
+      email: '',
+      id: '',
+      token: '',
+    });
+
   };
 
   render() {
     console.log(this.props);
     const { user } = this.state;
     return (
-      <div>
+      <div className='container'>
         <Router>
           <Header user={user} handleLogOut={this.handleLogOut} />
           <Switch>
