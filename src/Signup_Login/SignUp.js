@@ -34,7 +34,11 @@ class SignUp extends Component {
           </label>
           <label>
             Password:
-            <input value={this.state.password} onChange={this.handlePassword} />
+            <input
+              value={this.state.password}
+              onChange={this.handlePassword}
+              secureTextEntry={true}
+            />
           </label>
           <button>Submit</button>
         </form>

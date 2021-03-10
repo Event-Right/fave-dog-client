@@ -1,25 +1,23 @@
 import request from 'superagent';
 
-
 const URL = 'https://hidden-fjord-82693.herokuapp.com';
-// 'https://hidden-fjord-82693.herokuapp.com';
-
 
 export async function searchLocations(search, sortBy) {
-  const location = await request.get(`${URL}/dogs?location=${search}&sort_by=${sortBy}`);
-  
+  const location = await request.get(
+    `${URL}/dogs?location=${search}&sort_by=${sortBy}`
+  );
+
   return location.body;
 }
 
 export async function getLocations() {
-  const event = await request.get(`${URL}/dogs`); 
+  const event = await request.get(`${URL}/dogs`);
   return event.body;
 }
 export async function getDogHouse(id) {
-  const DogHouse = await request.get(`${URL}/dogs/${id}`); 
+  const DogHouse = await request.get(`${URL}/dogs/${id}`);
   return DogHouse.body;
 }
-
 
 export async function logInUser(email, password) {
   const response = await request.post(`${URL}/auth/signin`).send({
@@ -39,7 +37,7 @@ export async function signUpUser(email, password) {
   return response.body;
 }
 export async function addFavorite(location, token) {
-  console.log(token, 'token')
+  console.log(token, 'token');
   const response = await request
     .post(`${URL}/api/favorites`)
     .set('Authorization', token)
@@ -60,5 +58,5 @@ export async function deleteFavorites(token, id) {
     .delete(`${URL}/api/favorites/${id}`)
     .set('Authorization', token);
 
-    return body;
+  return body;
 }

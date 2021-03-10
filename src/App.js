@@ -15,18 +15,23 @@ import Home from './Home/Home';
 import Favorites from './Favorites/Favorites';
 import SearchPage from './SearchPage/SearchPage';
 import About from './About/About';
-import DetailsPage from './DetailsPage/details.js'
+import DetailsPage from './DetailsPage/details.js';
 
 export default class App extends Component {
   state = {
     user: getUserFromLocalStorage(),
     businessId: '',
   };
+<<<<<<< HEAD
+  handleID = (id) => {
+    this.setState({ businessId: id });
+=======
   
   handleID = (id) =>{
     this.setState({businessId: id});
+>>>>>>> e46c16120b41884eac6c1e938d34113ddbb13cb7
     putIdInLocalStorage();
-  }
+  };
 
   handleUserChange = (user) => {
     putUserInLocalStorage(user);
@@ -48,7 +53,7 @@ export default class App extends Component {
     console.log(this.props);
     const { user } = this.state;
     return (
-      <div className='container'>
+      <div className="container">
         <Router>
           <Header user={user} handleLogOut={this.handleLogOut} />
           <Switch>
@@ -75,13 +80,22 @@ export default class App extends Component {
               exact
               token={ user && user.token }
               render={(routerProps) => (
-                <SearchPage handleID={this.handleID} user={user} {...routerProps} />
+                <SearchPage
+                  handleID={this.handleID}
+                  user={user}
+                  {...routerProps}
+                />
               )}
             />
             <Route
               path="/details"
               exact
-              render={(routerProps) => <DetailsPage businessId={this.state.businessId} {...routerProps} />}
+              render={(routerProps) => (
+                <DetailsPage
+                  businessId={this.state.businessId}
+                  {...routerProps}
+                />
+              )}
             />
             <Route
               path="/about"
