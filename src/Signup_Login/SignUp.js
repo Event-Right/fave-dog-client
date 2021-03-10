@@ -21,7 +21,6 @@ class SignUp extends Component {
   };
 
   render() {
-    console.log(this.props.history);
     // if (this.state.user === true) {
     //   return <Redirect to="/search" />;
     // }
