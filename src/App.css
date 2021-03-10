@@ -44,3 +44,13 @@
   background-attachment: fixed;
   background-size: cover;
 }
+  
+img{
+  height: 300px;
+}
+
+.events{
+  border: 1px solid black;
+  margin: auto;
+
+}
