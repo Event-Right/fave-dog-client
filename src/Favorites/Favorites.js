@@ -13,13 +13,14 @@ export default class favorites extends Component {
     })
 
     const favorites = await getFavorites(this.props.token);
-
+  
     setTimeout(() => {
       this.setState({
         loading: false,
         favorites: favorites,
       });
     }, 1500);
+
   };
 
   handleDelete = async (id) => {
@@ -31,6 +32,7 @@ export default class favorites extends Component {
   }
 
   render() {
+
     return (
       <div>
         <h3>Your Favorite Hot Dog Locations</h3>
@@ -40,8 +42,8 @@ export default class favorites extends Component {
             <div key={`${fave.name}-${fave.id}`}>
               <h3>{fave.name}</h3>
               <img src={fave.image_url} alt={fave.name} />
-              <p>{fave.time_start}</p>
-              <p>{fave.time_end}</p>
+              <p>{fave.display_address}</p>
+              <p>{fave.rating}</p>
               <button onClick={() => this.handleDelete(fave.id)}>Delete from Favorites</button>
             </div>
           ))}
