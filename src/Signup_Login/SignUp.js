@@ -26,7 +26,7 @@ class SignUp extends Component {
     // }
     return (
       <div>
-        <h>New User? Sign up here!</h>
+        <h3>New User? Sign up here!</h3>
         <form onSubmit={this.handleSubmit}>
           <label>
             Email:

@@ -3,29 +3,25 @@ import './Slider.css';
 
 export default class Slider extends Component {
   state = {
-    rating: 5,
+    rating: 1,
   };
 
-  handleOnChange = (value) => {
-    this.setState({
-      rating: value,
-    });
-  };
+  handleOnChange = (e) => this.setState({ value: e.target.value });
 
   render() {
-    let { rating } = this.state;
     return (
       <div>
         <div class="slide-container">
           <input
             type="range"
-            min="1"
-            max="5"
+            min={1}
+            max={5}
             class="slider"
+            value={this.state.value}
             id="myRange"
             onChange={this.handleOnChange}
           />
-          <p>Value={rating}</p>
+          <p>Value={this.state.value}</p>
         </div>
       </div>
     );

@@ -49,7 +49,14 @@ export default class Search_Page extends Component {
       this.state.search,
       this.state.sort_by
     );
-    console.log(this.state.sort_by, 'asdfaklsfj');
+
+    this.setState({
+      locations: locations,
+    });
+  };
+
+  componentDidMount = async () => {
+    const locations = await getLocations();
     this.setState({
       locations: locations,
     });
@@ -60,9 +67,11 @@ export default class Search_Page extends Component {
       sort_by: e.target.value,
     });
   };
+  handleDetailsClick = async (faveDog) => {
+    this.props.handleID(faveDog.id);
+    this.props.history.push('/details');
+  };
   handleFavoritesClick = async (faveDog) => {
-    console.log(faveDog, 'favedog');
-    console.log(this.props.user.token);
     await addFavorite(
       {
         name: faveDog.name,
@@ -128,6 +137,9 @@ export default class Search_Page extends Component {
                   </button>
                 )}
               </p>
+              <button onClick={() => this.handleDetailsClick(location)}>
+                Doggone Details{' '}
+              </button>
             </div>
           ))}
         </div>
