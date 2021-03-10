@@ -7,6 +7,7 @@ import './App.css';
 import {
   getUserFromLocalStorage,
   putUserInLocalStorage,
+  putIdInLocalStorage,
 } from './local-storage-utils.js';
 
 import Header from './Components/Header';
@@ -14,11 +15,17 @@ import Home from './Home/Home';
 import Favorites from './Favorites/Favorites';
 import SearchPage from './SearchPage/SearchPage';
 import About from './About/About';
+import DetailsPage from './DetailsPage/details.js'
 
 export default class App extends Component {
   state = {
     user: getUserFromLocalStorage(),
+    businessId: '',
   };
+  handleID = (id) =>{
+    this.setState({businessId: id});
+    putIdInLocalStorage();
+  }
 
   handleUserChange = (user) => {
     this.setState({ user });
@@ -60,8 +67,13 @@ export default class App extends Component {
               path="/search"
               exact
               render={(routerProps) => (
-                <SearchPage user={user} {...routerProps} />
+                <SearchPage handleID={this.handleID} user={user} {...routerProps} />
               )}
+            />
+            <Route
+              path="/details"
+              exact
+              render={(routerProps) => <DetailsPage businessId={this.state.businessId} {...routerProps} />}
             />
             <Route
               path="/about"
