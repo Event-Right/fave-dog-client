@@ -41,8 +41,11 @@ export default class Search_Page extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    await this.makeSearch();
-  };
+    componentDidMount = async () => {
+        const locations = await getLocations();
+        this.setState({
+            locations: locations
+        })};
 
   makeSearch = async () => {
     const locations = await searchLocations(

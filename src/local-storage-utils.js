@@ -3,13 +3,12 @@ export const ID = 'ID';
 export function getUserFromLocalStorage() {
   const user = localStorage.getItem(USER);
 
-  if (user && user.token) return JSON.parse(user);
-  else
-    return {
-      email: '',
-      id: '',
-      token: '',
-    };
+  if (user) return JSON.parse(user);
+  return {
+    email: '',
+    id: '',
+    token: '',
+  };
 }
 
 export function putUserInLocalStorage(user) {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
 import PrivateRoute from './Components/PrivateRoute.js';
 
 import './App.css';
@@ -22,23 +22,35 @@ export default class App extends Component {
     user: getUserFromLocalStorage(),
     businessId: '',
   };
+<<<<<<< HEAD
   handleID = (id) => {
     this.setState({ businessId: id });
+=======
+  
+  handleID = (id) =>{
+    this.setState({businessId: id});
+>>>>>>> e46c16120b41884eac6c1e938d34113ddbb13cb7
     putIdInLocalStorage();
   };
 
   handleUserChange = (user) => {
-    this.setState({ user });
-
     putUserInLocalStorage(user);
-  };
+    const user1 = getUserFromLocalStorage();
+
+    this.setState({ user: user1 }
+)  };
 
   handleLogOut = () => {
-    this.handleUserChange();
+    this.handleUserChange({
+      email: '',
+      id: '',
+      token: '',
+    });
+
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     const { user } = this.state;
     return (
       <div className="container">
@@ -66,6 +78,7 @@ export default class App extends Component {
             <Route
               path="/search"
               exact
+              token={ user && user.token }
               render={(routerProps) => (
                 <SearchPage
                   handleID={this.handleID}
