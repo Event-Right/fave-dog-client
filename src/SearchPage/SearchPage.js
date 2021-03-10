@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {  getDogs } from '../Utils/Api_Utils.js'
 import { getLocations, addFavorite, getFavorites, searchLocations } from '../Utils/Api_Utils.js'
 import Spinner from '../Components/Spinner.js';
 import '../App.css';
@@ -44,7 +43,7 @@ export default class Search_Page extends Component {
 
     makeSearch = async () => {
         const locations = await searchLocations(this.state.search, this.state.sort_by);
-       console.log(this.state.sort_by, 'asdfaklsfj')
+       
         this.setState({
             locations: locations,
             
@@ -52,7 +51,7 @@ export default class Search_Page extends Component {
     }
 
     componentDidMount = async () => {
-        const locations = await getDogs();
+        const locations = await getLocations();
         this.setState({
             locations: locations
         })}
@@ -64,9 +63,13 @@ export default class Search_Page extends Component {
             sort_by: e.target.value
         })
     }
+    handleDetailsClick = async (faveDog) =>{
+        this.props.handleID(faveDog.id);
+        this.props.history.push('/details')
+
+    }
     handleFavoritesClick = async (faveDog) => {
-        console.log(faveDog, 'favedog');
-        console.log(this.props.user.token)
+        
         await addFavorite({
             name: faveDog.name, 
             categories: faveDog.categories, 
@@ -127,6 +130,7 @@ export default class Search_Page extends Component {
                                         : <button onClick={() => this.handleFavoritesClick(location)} >add to favorites</button>
                                     }
                                 </p>
+                                <button onClick={() => this.handleDetailsClick(location)}>Doggone Details </button>
                                 
                             </div>
                         )

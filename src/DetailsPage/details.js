@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import {  getDogHouse, } from '/Utils/Api_Utils.js';
+import {  getDogHouse, } from '../Utils/Api_Utils.js';
 
-export default class CastDetailsPage extends Component {
+export default class DetailsPage extends Component {
+    state = {doghouse:[],}
     
     componentDidMount= async() => {
-            const doghouse = await getDogHouse(this.props.doghouse_id);
+            const doghouse = await getDogHouse(this.props.businessId);
             this.setState({
-                doghouse: doghouse,
-            })
-          render() {
+                doghouse: [doghouse],
+            })}
+            render(){
               return (
                   <div>
                       <h1>Doghouse Details</h1>
@@ -30,4 +31,5 @@ export default class CastDetailsPage extends Component {
                   </div>
               )
           }
-    }
+    
+}
