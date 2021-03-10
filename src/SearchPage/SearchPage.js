@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import {  getDogs } from '../Utils/Api_Utils.js'
 import { getLocations, addFavorite, getFavorites, searchLocations } from '../Utils/Api_Utils.js'
 import Spinner from '../Components/Spinner.js';
-
+import '../App.css';
 
 export default class Search_Page extends Component {
     state = {
         locations: [],
         favorites: [],
         search: '',
-        sortBy: 'distance',
+        sort_by: 'distance',
         loading: false
     }
 
@@ -43,8 +43,8 @@ export default class Search_Page extends Component {
     }
 
     makeSearch = async () => {
-        const locations = await searchLocations(this.state.search, this.state.sortBy);
-       
+        const locations = await searchLocations(this.state.search, this.state.sort_by);
+       console.log(this.state.sort_by, 'asdfaklsfj')
         this.setState({
             locations: locations,
             
@@ -61,7 +61,7 @@ export default class Search_Page extends Component {
 
 
         await this.setState({
-            sortBy: e.target.value
+            sort_by: e.target.value
         })
     }
     handleFavoritesClick = async (faveDog) => {
@@ -99,8 +99,7 @@ export default class Search_Page extends Component {
     }
 
     render() {
-        console.log(this.props, 'props')
-        console.log(this.state, 'state')
+        console.log(this.state);
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -110,17 +109,18 @@ export default class Search_Page extends Component {
                 <select onChange={this.handleSortBy}>
                     <option value='distance'>Distance</option>
                     <option value='rating'>Rating</option>
-                    <option value='rating_count'>Rating Count</option>
+                    <option value='review_count'>Review Count</option>
                     <option value='best_match'>Best Match</option>
                 </select>
                 { this.state.loading && <Spinner />}
-                <div className='events'>
+                <div >
                     {
                         this.state.locations.map( (location, i) =>
-                            <div key={`${location.name}-${i}`} >
+                            <div className='events' key={`${location.name}-${i}`} >
                                 <h2>{location.name}</h2>
                                 <img alt={location.name} src={location.image_url} />
                                 <p>{location.rating}</p>
+                                <p>{location.review_count}</p>
                                 <p>
                                     {this.isAFavorite(location)
                                         ? 'You love this dog'
