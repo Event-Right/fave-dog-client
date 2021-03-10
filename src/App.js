@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './Components/PrivateRoute.js';
 
 import './App.css';
@@ -22,14 +22,8 @@ export default class App extends Component {
     user: getUserFromLocalStorage(),
     businessId: '',
   };
-<<<<<<< HEAD
   handleID = (id) => {
     this.setState({ businessId: id });
-=======
-  
-  handleID = (id) =>{
-    this.setState({businessId: id});
->>>>>>> e46c16120b41884eac6c1e938d34113ddbb13cb7
     putIdInLocalStorage();
   };
 
