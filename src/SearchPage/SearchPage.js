@@ -1,19 +1,30 @@
 import React, { Component } from 'react'
 import { getLocations, addFavorite, getFavorites, searchLocations } from '../Utils/Api_Utils.js'
+import Spinner from '../Components/Spinner.js';
+
 
 export default class Search_Page extends Component {
     state = {
         locations: [],
         favorites: [],
-        search: ''
+        search: '',
+        sortBy: 'distance',
+        loading: false
     }
 
     
   componentDidMount = async () => {
-        const locations = await getLocations();
         this.setState({
-            locations: locations
+            loading: true,
         })
+        const locations = await getLocations();
+        setTimeout(() => {
+            this.setState({
+                loading: false,
+                locations: locations,
+                
+            })
+        }, 1500);
   }
     
      fetchFavorites = async () => {
@@ -31,11 +42,20 @@ export default class Search_Page extends Component {
     }
 
     makeSearch = async () => {
-        const locations = await searchLocations(this.state.search);
-        this.setState({ locations });
+        const locations = await searchLocations(this.state.search, this.state.sortBy);
+       
+        this.setState({
+            locations: locations,
+            
+        });
     }
 
+    handleSortBy = async (e) => {
 
+        await this.setState({
+            sortBy: e.target.value
+        })
+    }
     handleFavoritesClick = async (faveDog) => {
         console.log(faveDog, 'favedog');
         console.log(this.props.user.token)
@@ -78,6 +98,13 @@ export default class Search_Page extends Component {
                     <input value={this.state.search} onChange={this.handleSearchChange} />
                     <button>Search</button>
                 </form>
+                <select onChange={this.handleSortBy}>
+                    <option value='distance'>Distance</option>
+                    <option value='rating'>Rating</option>
+                    <option value='rating_count'>Rating Count</option>
+                    <option value='best_match'>Best Match</option>
+                </select>
+                { this.state.loading && <Spinner />}
                 <div className='events'>
                     {
                         this.state.locations.map( (location, i) =>
