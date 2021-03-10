@@ -54,7 +54,7 @@ export default class Search_Page extends Component {
         const locations = await getLocations();
         this.setState({
             locations: locations
-        })}
+        })};
 
     handleSortBy = async (e) => {
 

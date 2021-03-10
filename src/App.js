@@ -28,17 +28,18 @@ export default class App extends Component {
   }
 
   handleUserChange = (user) => {
-    this.setState({ user });
-
     putUserInLocalStorage(user);
+    const user1 = getUserFromLocalStorage();
+    this.setState({user: user1})
   };
-
+  
   handleLogOut = () => {
-    this.handleUserChange();
+    this.handleUserChange('');
+    
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     const { user } = this.state;
     return (
       <div>
@@ -66,6 +67,7 @@ export default class App extends Component {
             <Route
               path="/search"
               exact
+              token={ user && user.token }
               render={(routerProps) => (
                 <SearchPage handleID={this.handleID} user={user} {...routerProps} />
               )}
