@@ -2,7 +2,18 @@ import React, { Component } from 'react';
 import './Slider.css';
 
 export default class Slider extends Component {
+  state = {
+    rating: 5,
+  };
+
+  handleOnChange = (value) => {
+    this.setState({
+      rating: value,
+    });
+  };
+
   render() {
+    let { rating } = this.state;
     return (
       <div>
         <div class="slide-container">
@@ -12,10 +23,9 @@ export default class Slider extends Component {
             max="5"
             class="slider"
             id="myRange"
-          ></input>
-          <p>
-            Value: <span id="value"></span>
-          </p>
+            onChange={this.handleOnChange}
+          />
+          <p>Value={rating}</p>
         </div>
       </div>
     );
