@@ -2,13 +2,12 @@ import request from 'superagent';
 
 const URL = 'https://hidden-fjord-82693.herokuapp.com';
 
-export async function searchLocations(search) {
-  const location = await request.get(`${URL}/dogs?location=${search}`);
+export async function searchLocations(search, sortBy) {
+  const location = await request.get(`${URL}/dogs?location=${search}&sort_by=${sortBy}`);
   
   return location.body;
 }
 
-<<<<<<< HEAD
 export async function getDogs() {
   const Dogslist = await request.get(`${URL}/dogs`); 
   return Dogslist.body;
@@ -16,12 +15,8 @@ export async function getDogs() {
 export async function getDogHouse(id) {
   const DogHouse = await request.get(`${URL}/dogs/${id}`); 
   return DogHouse.body;
-=======
-export async function getLocations() {
-  const event = await request.get(`${URL}/dogs`); //
-  return event.body;
->>>>>>> e6b65f2f8b3dbd1c166cea1d8ff86e6bb104d5b0
 }
+
 
 export async function logInUser(email, password) {
   const response = await request.post(`${URL}/auth/signin`).send({

@@ -1,22 +1,16 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
-import { searchEvents, getDogs } from '../Utils/Api_Utils.js'
-=======
+import {  getDogs } from '../Utils/Api_Utils.js'
 import { getLocations, addFavorite, getFavorites, searchLocations } from '../Utils/Api_Utils.js'
 import Spinner from '../Components/Spinner.js';
->>>>>>> e6b65f2f8b3dbd1c166cea1d8ff86e6bb104d5b0
+
 
 export default class Search_Page extends Component {
     state = {
         locations: [],
-<<<<<<< HEAD
-        search: '',
-        id: '',
-=======
         favorites: [],
         search: '',
+        sortBy: 'distance',
         loading: false
->>>>>>> e6b65f2f8b3dbd1c166cea1d8ff86e6bb104d5b0
     }
 
     
@@ -28,7 +22,8 @@ export default class Search_Page extends Component {
         setTimeout(() => {
             this.setState({
                 loading: false,
-                locations: locations
+                locations: locations,
+                
             })
         }, 1500);
   }
@@ -48,18 +43,27 @@ export default class Search_Page extends Component {
     }
 
     makeSearch = async () => {
-        const locations = await searchLocations(this.state.search);
-        this.setState({ locations });
+        const locations = await searchLocations(this.state.search, this.state.sortBy);
+       
+        this.setState({
+            locations: locations,
+            
+        });
     }
 
-<<<<<<< HEAD
     componentDidMount = async () => {
         const locations = await getDogs();
         this.setState({
             locations: locations
-        })
-=======
+        })}
 
+    handleSortBy = async (e) => {
+
+
+        await this.setState({
+            sortBy: e.target.value
+        })
+    }
     handleFavoritesClick = async (faveDog) => {
         console.log(faveDog, 'favedog');
         console.log(this.props.user.token)
@@ -83,7 +87,7 @@ export default class Search_Page extends Component {
         }, this.props.user.token);
         
         await this.fetchFavorites();
->>>>>>> e6b65f2f8b3dbd1c166cea1d8ff86e6bb104d5b0
+
     }
 
     isAFavorite = (location) => {
@@ -103,6 +107,12 @@ export default class Search_Page extends Component {
                     <input value={this.state.search} onChange={this.handleSearchChange} />
                     <button>Search</button>
                 </form>
+                <select onChange={this.handleSortBy}>
+                    <option value='distance'>Distance</option>
+                    <option value='rating'>Rating</option>
+                    <option value='rating_count'>Rating Count</option>
+                    <option value='best_match'>Best Match</option>
+                </select>
                 { this.state.loading && <Spinner />}
                 <div className='events'>
                     {
@@ -125,5 +135,5 @@ export default class Search_Page extends Component {
             </div>
         )
     }
+
 }
- 
