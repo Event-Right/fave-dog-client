@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './About.css';
+import Slider from '../Components/Slider.js';
 
 export default class About extends Component {
   render() {
@@ -136,6 +137,7 @@ export default class About extends Component {
             </div>
           </div>
         </div>
+        <Slider />
       </div>
     );
   }
