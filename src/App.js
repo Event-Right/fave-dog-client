@@ -34,7 +34,7 @@ export default class App extends Component {
     console.log(this.state);
     const { user } = this.state;
     return (
-      <div>
+      <div className='container'>
         <Router>
           <Header user={user} handleLogOut={this.handleLogOut} />
           <Switch>

@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  background-image: url('./image/HotDogBackground.png');
+  background-repeat: repeat;
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+}
