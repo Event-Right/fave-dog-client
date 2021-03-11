@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {  getDogHouse, } from '../Utils/Api_Utils.js';
+import {getIdFromLocalStorage } from '../local-storage-utils.js';
 import style from '../SearchPage/SearchPage.module.css';
 import styleD from '../DetailsPage/details.module.css';
 
@@ -7,7 +8,8 @@ export default class DetailsPage extends Component {
     state = {doghouse:[],}
     
     componentDidMount= async() => {
-            const doghouse = await getDogHouse(this.props.businessId);
+           const businessId = getIdFromLocalStorage();
+            const doghouse = await getDogHouse(businessId);
             this.setState({
                 doghouse: [doghouse],
             })}
