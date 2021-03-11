@@ -1,8 +1,9 @@
+
 import React, { Component } from 'react'
 import { getLocations, addFavorite, getFavorites, searchLocations } from '../Utils/Api_Utils.js'
 import Spinner from '../Components/Spinner.js';
 import '../App.css';
-
+import style from './SearchPage.module.css'
 export default class Search_Page extends Component {
     state = {
         locations: [],
@@ -52,6 +53,8 @@ export default class Search_Page extends Component {
     }
 
     handleSortBy = async (e) => {
+
+
         await this.setState({
             sort_by: e.target.value
         })
@@ -97,26 +100,30 @@ export default class Search_Page extends Component {
     render() {
         console.log(this.props);
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input value={this.state.search} onChange={this.handleSearchChange} />
-                    <button>Search</button>
-                </form>
-                <select onChange={this.handleSortBy}>
-                    <option value='distance'>Distance</option>
-                    <option value='rating'>Rating</option>
-                    <option value='review_count'>Review Count</option>
-                    <option value='best_match'>Best Match</option>
-                </select>
+            <div className={style.container}>
+                <div className={style.searchFormContainer}>
+                    <form className={style.searchForm}onSubmit={this.handleSubmit}>
+                        <input placeholder='Enter a Location... and smash the dog' className={style.searchBar} value={this.state.search} onChange={this.handleSearchChange} />
+                        <button></button>
+                    </form>
+                    <select className={style.dropDown} onChange={this.handleSortBy}>
+                        <option value='' selected>Sort By...</option>
+                        <option value='distance'>Distance</option>
+                        <option value='rating'>Rating</option>
+                        <option value='review_count'>Review Count</option>
+                        <option value='best_match'>Best Match</option>
+                    </select>
+                </div>
+                
                 { this.state.loading && <Spinner />}
-                <div >
+                <div className={style.locations}>
                     {
                         this.state.locations.map( (location, i) =>
-                            <div className='events' key={`${location.name}-${i}`} >
+                            <div className={style.location} key={`${location.name}-${i}`} >
                                 <h2>{location.name}</h2>
                                 <img alt={location.name} src={location.image_url} />
-                                <p>{location.rating}</p>
-                                <p>{location.review_count}</p>
+                                <p>Rating: {location.rating}</p>
+                                <p>Number of Reviews: {location.review_count}</p>
                                 <p>
                                     {this.isAFavorite(location)
                                         ? 'You love this dog'
