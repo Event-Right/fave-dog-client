@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { deleteFavorites, getFavorites } from '../Utils/Api_Utils.js';
+import { deleteFavorites, getFavorites } from '../Utils/Api_Utils.ts';
 import Spinner from '../Components/Spinner.js';
 import '../App.css';
 import './Favorite.css';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { logInUser } from '../Utils/Api_Utils.js';
+import { logInUser } from '../Utils/Api_Utils.ts';
 import { withRouter } from 'react-router-dom';
 import style from './Auth.module.css'
 class SignIn extends Component {
@@ -15,7 +15,7 @@ class SignIn extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    const user = await logInUser(this.state.email, this.state.password, this.state.name);
+    const user = await logInUser(this.state.email, this.state.password);
 
     this.props.handleUserChange(user);
     this.props.history.push('/search');

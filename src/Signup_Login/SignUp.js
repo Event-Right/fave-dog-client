@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { signUpUser } from '../Utils/Api_Utils.js';
+import { signUpUser } from '../Utils/Api_Utils.ts';
 import { withRouter } from 'react-router-dom';
 import style from './Auth.module.css';
 class SignUp extends Component {

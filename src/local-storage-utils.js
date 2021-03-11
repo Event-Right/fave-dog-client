@@ -1,5 +1,8 @@
 export const USER = 'USER';
 export const ID = 'ID';
+
+
+
 export function getUserFromLocalStorage() {
   const user = localStorage.getItem(USER);
 

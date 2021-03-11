@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { getLocations, addFavorite, getFavorites, searchLocations } from '../Utils/Api_Utils.js'
+import { getLocations, addFavorite, getFavorites, searchLocations } from '../Utils/Api_Utils.ts'
 import Spinner from '../Components/Spinner.js';
 import '../App.css';
 import style from './SearchPage.module.css'
