@@ -21,7 +21,7 @@ export default class favorites extends Component {
         loading: false,
         favorites: favorites,
       });
-    }, 1500);
+    }, 100);
 
   };
 
@@ -48,14 +48,23 @@ export default class favorites extends Component {
         <div className='list'>
           {this.state.favorites.map((fave) => (
             <div className='listItem'>
-              <div className='listItem1' key={`${fave.business_id}`}>
-                <img className='itemImg' src={fave.image_url} alt={fave.name} />
+              <img className='itemImg' src={fave.image_url} alt={fave.name} />
+              <div className='label1'>
+                <h3>Name</h3>
                 <h3>{fave.name}</h3>
-                <p>{fave.display_address}</p>
-                <p>{fave.rating}</p>
-                <button className='deleteButton' onClick={() => this.handleDelete(fave.id)}>Delete from Favorites</button>
-                <button onClick={() => this.handleDetailsClick(fave)}>Doggone Details </button>
               </div>
+              <div className='label2' key={`${fave.business_id}`}>    
+                <h3>Address</h3>
+                <p>{fave.display_address}</p>
+              </div>
+              <div className='label3'>
+                <h3>Rating</h3>
+                <p>{fave.rating}</p>
+              </div>
+              <div className='theButtons'>
+                  <button className='deleteButton' onClick={() => this.handleDelete(fave.id)}><span>Delete </span></button>
+                  <button className='deleteButton' onClick={() => this.handleDetailsClick(fave)}>Doggone Details </button>
+                </div>
             </div>
           ))}
         </div>
