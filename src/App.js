@@ -66,7 +66,10 @@ export default class App extends Component {
               exact
               token={user && user.token}
               render={(routerProps) => (
-                <Favorites user={user} {...routerProps} />
+                <Favorites 
+                handleID={this.handleID}
+                user={user} 
+                {...routerProps} />
               )}
             />
             <Route
