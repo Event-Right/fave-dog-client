@@ -29,16 +29,17 @@ export async function logInUser(email, password) {
   return response.body;
 }
 
-export async function signUpUser(email, password) {
+export async function signUpUser(email, password, name) {
   const response = await request.post(`${URL}/auth/signup`).send({
     email: email,
     password: password,
+    name: name
   });
 
   return response.body;
 }
 export async function addFavorite(location, token) {
-  console.log(token, 'token');
+  
   const response = await request
     .post(`${URL}/api/favorites`)
     .set('Authorization', token)

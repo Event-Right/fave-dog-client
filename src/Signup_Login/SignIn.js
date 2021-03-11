@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { logInUser } from '../Utils/Api_Utils.js';
 import { withRouter } from 'react-router-dom';
+import style from './Auth.module.css'
 class SignIn extends Component {
   state = {
     email: '',
@@ -14,28 +15,29 @@ class SignIn extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    const user = await logInUser(this.state.email, this.state.password);
+    const user = await logInUser(this.state.email, this.state.password, this.state.name);
 
     this.props.handleUserChange(user);
     this.props.history.push('/search');
   };
 
   render() {
-    console.log(this.props.history);
+ 
     // if (this.state.user === true) {
     //   return <Redirect to="/search" />;
     // }
     return (
-      <div>
-        <h3>Sign In</h3>
-        <form onSubmit={this.handleSubmit}>
+      <div className={style.containerDiv}>
+        
+        <form className={style.form} onSubmit={this.handleSubmit}>
+          <h3>Sign In</h3>
           <label>
             Email:
             <input value={this.state.email} onChange={this.handleEmail} />
           </label>
           <label>
             Password:
-            <input value={this.state.password} onChange={this.handlePassword} />
+            <input type='password' value={this.state.password} onChange={this.handlePassword} />
           </label>
           <button>Submit</button>
         </form>
