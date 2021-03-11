@@ -24,7 +24,8 @@ export default class App extends Component {
   };
   handleID = (id) => {
     this.setState({ businessId: id });
-    putIdInLocalStorage();
+    putIdInLocalStorage(id);
+    console.log(id);
   };
 
   handleUserChange = (user) => {

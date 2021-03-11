@@ -26,7 +26,7 @@ export default class Search_Page extends Component {
                 locations: locations,
                 favorites: favorites
             })
-        }, 1500);
+        }, 100);
   }
     
      fetchFavorites = async () => {
@@ -81,7 +81,7 @@ export default class Search_Page extends Component {
             city: faveDog.location.city,
             zip_code: faveDog.location.zip_code,
             state: faveDog.location.state,
-            display_address: faveDog.location.display_address,
+            display_address: faveDog.location.display_address.join(', '),
             business_id: faveDog.id,
         }, this.props.user.token);
         
@@ -106,31 +106,38 @@ export default class Search_Page extends Component {
                         <input placeholder='Enter a Location... and smash the dog' className={style.searchBar} value={this.state.search} onChange={this.handleSearchChange} />
                         <button></button>
                     </form>
-                    <select className={style.dropDown} onChange={this.handleSortBy}>
+                    <select className={style.select} onChange={this.handleSortBy}>
                         <option value='' selected>Sort By...</option>
                         <option value='distance'>Distance</option>
                         <option value='rating'>Rating</option>
                         <option value='review_count'>Review Count</option>
                         <option value='best_match'>Best Match</option>
                     </select>
+                    
                 </div>
                 
-                { this.state.loading && <Spinner />}
+                <div className={style.spinner}>{ this.state.loading && <Spinner />}</div>
                 <div className={style.locations}>
                     {
                         this.state.locations.map( (location, i) =>
                             <div className={style.location} key={`${location.name}-${i}`} >
                                 <h2>{location.name}</h2>
                                 <img alt={location.name} src={location.image_url} />
-                                <p>Rating: {location.rating}</p>
-                                <p>Number of Reviews: {location.review_count}</p>
-                                <p>
-                                    {this.isAFavorite(location)
+                                <p className={style.ratingAndCountP}>
+                                   <p><label>Rating: </label>{location.rating}</p>
+                                <p><label>Reviews: </label>{location.review_count}</p> 
+                                </p>
+                                <div className={style.buttonDiv}>
+                                    
+                                    <span className={style.buttonP}><button onClick={() => this.handleDetailsClick(location)}>Doggone Details </button></span>
+                                    <span className={style.buttonP}>{this.isAFavorite(location)
                                         ? 'You love this dog'
                                         : <button onClick={() => this.handleFavoritesClick(location)} >add to favorites</button>
-                                    }
-                                </p>
-                                <button onClick={() => this.handleDetailsClick(location)}>Doggone Details </button>
+                                    }</span>
+                                    
+                                   
+                                </div>
+                               
                                 
                             </div>
                         )

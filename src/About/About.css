@@ -1,7 +1,19 @@
 .title {
   font-family: Arial;
   font-size: 20px;
+  font-weight: bolder;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.interview {
+  font-family: Arial;
   font-weight: bold;
+  font-size: 20px;
+  width: auto;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(255, 236, 66, 0.918);
 }
 
 .aboutBody {
@@ -27,14 +39,23 @@
   font-family: Arial;
   font-size: 20px;
   background-color: rgba(230, 222, 180, 0.582);
-  color: yellow;
+  color: black;
+}
+
+.bio {
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: rgb(241, 228, 214);
+  margin: 7px;
+  height: 200px;
+  width: 295px;
 }
 
 .name {
   font-family: Arial;
   font-size: 20px;
-  font-weight: bold;
-  color: yellow;
+  font-weight: bolder;
+  color: black;
 }
 
 .links {
@@ -45,7 +66,7 @@
 .box {
   position: relative;
   width: 300px;
-  height: 300px;
+  height: 295px;
   display: inline-block;
   border-radius: 8px;
   overflow: hidden;
