@@ -31,7 +31,7 @@ export default class Search_Page extends Component {
     
      fetchFavorites = async () => {
         const favorites = await getFavorites(this.props.user.token)
-        console.log(this.state)
+      
         this.setState({ favorites });
      }
     
@@ -93,12 +93,12 @@ export default class Search_Page extends Component {
         if (!this.props.user.token) return true;
         
        const isIsAFavorite = this.state.favorites.find(favorite => favorite.name === location.name);
-       console.log(location, this.state.favorites);
+      
         return Boolean(isIsAFavorite);
     }
 
     render() {
-        console.log(this.props);
+      
         return (
             <div className={style.container}>
                 <div className={style.searchFormContainer}>

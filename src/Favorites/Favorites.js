@@ -35,7 +35,7 @@ export default class favorites extends Component {
 
   handleDetailsClick = async (faveDog) =>{
     this.props.handleID(faveDog.business_id);
-    console.log(faveDog);
+
     this.props.history.push('/details')
 }
 
