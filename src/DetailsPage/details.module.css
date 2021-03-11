@@ -6,15 +6,15 @@
     display: grid;
     justify-content: center;
     text-align: center;
+    padding-bottom: 2%;
 }
 
 .dp{
     margin: 0;
-    padding: 1%;
+    padding: 0;
     text-align: center;
     max-height: 211px;
     max-width: 408px;
-    border: solid 2px black;
     text-shadow: 1px 0px 5px rgba(66,66,66,.74);
     font-weight: 800;
     font-size: 15px;
