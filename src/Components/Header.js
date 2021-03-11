@@ -4,6 +4,7 @@ import style from './Header.module.css';
 
 export default class Header extends Component {
   render() {
+    
     return (
       <div className={style.headerContainerDiv}>
         <div className={style.linkContainerDiv}>
@@ -33,7 +34,7 @@ export default class Header extends Component {
               
             </>
           }
-          <p>{this.props.user.email}</p>
+          <p>{this.props.user.name}</p>
         </div>
       </div>
     );

@@ -28,6 +28,7 @@ export default class App extends Component {
   };
 
   handleUserChange = (user) => {
+    console.log(user)
     putUserInLocalStorage(user);
     const user1 = getUserFromLocalStorage();
 
@@ -39,17 +40,18 @@ export default class App extends Component {
       email: '',
       id: '',
       token: '',
+      name: '',
     });
 
   };
 
   render() {
-    console.log(this.props);
     const { user } = this.state;
+    console.log(user)
     return (
       <div className="container">
         <Router>
-          <Header user={user} handleLogOut={this.handleLogOut} />
+          <Header name={user.name} user={user} handleLogOut={this.handleLogOut} />
           <Switch>
             <Route
               path="/"

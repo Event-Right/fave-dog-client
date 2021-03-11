@@ -8,6 +8,7 @@ export function getUserFromLocalStorage() {
     email: '',
     id: '',
     token: '',
+    name: '',
   };
 }
 
