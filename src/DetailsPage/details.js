@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import {  getDogHouse, } from '../Utils/Api_Utils.js';
+import style from '../SearchPage/SearchPage.module.css';
+import styleD from '../DetailsPage/details.module.css';
 
 export default class DetailsPage extends Component {
     state = {doghouse:[],}
@@ -11,20 +13,20 @@ export default class DetailsPage extends Component {
             })}
             render(){
               return (
-                  <div>
+                  <div className= {styleD.container}>
                       <h1>Doghouse Details</h1>
                       {
                         this.state.doghouse.map( details =>
-                            <div key={`${details.name}`} >
-                                <h2>{details.name}</h2>
+                            <div className= {style.location} key={`${details.name}`} >
+                                <h2 className={styleD.busName}>{details.name}</h2>
                                 <img alt={details.name} src={details.image_url} />
-                                <p>Price: {details.price}</p>
+                                <div className= {styleD.dp}>
                                 <p>Rating: {details.rating}</p>
                                 <p># of reviews: {details.review_count}</p>
-                                <p>Location: {details.location.display_address}</p>
-                                <p>Offers: {details.transactions}</p>
-                                <p>More Info: {details.url}</p>
-                                
+                                <p>Location: {details.location.display_address.join(', ')}</p>
+                                <p>Offers: {details.transactions.join(' / ')}</p>
+                                <p className={styleD.busUrl}><a href= {details.url}> More Doggone Info!</a></p>
+                                </div>
                             </div>
                         )
                     }
