@@ -7,19 +7,33 @@ export default class Header extends Component {
     return (
       <div className={style.headerContainerDiv}>
         <div className={style.linkContainerDiv}>
-          <NavLink to="/">
+          {
+            this.props.user && this.props.user.token &&
+            <>
+              <Link className={style.link} to= "/"><button onClick={this.props.handleLogOut}>Sign Out</button></Link>
+              </>
+          }
+          
+          <NavLink className={style.link} to="/">
             <p>Home</p>
           </NavLink>
-          <NavLink to="/search">
-            <p>Search</p>
-          </NavLink>
-          <NavLink to="/favorites">
-            <p>Favorites</p>
-          </NavLink>
-          <Link to= "/"><button onClick={this.props.handleLogOut}>Sign Out</button></Link>
-          <NavLink to="/about">
+          <NavLink className={style.link} to="/about">
             <p>About</p>
           </NavLink>
+          
+          {
+            this.props.user && this.props.user.token &&
+            <>
+              <NavLink className={style.link} to="/search">
+                <p>Search</p>
+              </NavLink>
+              <NavLink className={style.link} to="/favorites">
+                <p>Favorites</p>
+              </NavLink>
+              
+            </>
+          }
+          <p>{this.props.user.email}</p>
         </div>
       </div>
     );
