@@ -1,0 +1,32 @@
+.details{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.container{
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+
+.dp{
+    margin: 0;
+    padding: 1%;
+    text-align: center;
+    max-height: 211px;
+    max-width: 408px;
+    border: solid 2px black;
+    text-shadow: 1px 0px 5px rgba(66,66,66,.74);
+    font-weight: 800;
+    font-size: 15px;
+}
+.dp a{
+    color: rgba(193, 35, 18, 0.817);
+    text-decoration: none;
+}
+.busName{
+    font-size: 200%;
+    text-decoration: underline;
+    color: rgba(193, 35, 18, 0.817);
+    font-family: fantasy;
+    font-weight: 900;
+}
