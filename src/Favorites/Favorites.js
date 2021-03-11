@@ -33,20 +33,29 @@ export default class favorites extends Component {
     })
   }
 
+  handleDetailsClick = async (faveDog) =>{
+    this.props.handleID(faveDog.business_id);
+    console.log(faveDog);
+    this.props.history.push('/details')
+}
+
   render() {
 
     return (
       <div>
         <h3 className='title' >Your Favorite Hot Dog Locations</h3>
         { this.state.loading && <Spinner />}
-        <div>
+        <div className='list'>
           {this.state.favorites.map((fave) => (
-            <div key={`${fave.name}-${fave.id}`}>
-              <h3>{fave.name}</h3>
-              <img src={fave.image_url} alt={fave.name} />
-              <p>{fave.display_address}</p>
-              <p>{fave.rating}</p>
-              <button onClick={() => this.handleDelete(fave.id)}>Delete from Favorites</button>
+            <div className='listItem'>
+              <div className='listItem1' key={`${fave.business_id}`}>
+                <img className='itemImg' src={fave.image_url} alt={fave.name} />
+                <h3>{fave.name}</h3>
+                <p>{fave.display_address}</p>
+                <p>{fave.rating}</p>
+                <button className='deleteButton' onClick={() => this.handleDelete(fave.id)}>Delete from Favorites</button>
+                <button onClick={() => this.handleDetailsClick(fave)}>Doggone Details </button>
+              </div>
             </div>
           ))}
         </div>

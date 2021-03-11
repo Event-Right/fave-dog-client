@@ -18,10 +18,12 @@ export default class Search_Page extends Component {
             loading: true,
         })
         const locations = await getLocations();
+        const favorites = await getFavorites(this.props.user.token);
         setTimeout(() => {
             this.setState({
                 loading: false,
                 locations: locations,
+                favorites: favorites
             })
         }, 1500);
   }
@@ -76,8 +78,8 @@ export default class Search_Page extends Component {
             city: faveDog.location.city,
             zip_code: faveDog.location.zip_code,
             state: faveDog.location.state,
-            display_address: faveDog.location.display_address
-           
+            display_address: faveDog.location.display_address,
+            business_id: faveDog.id,
         }, this.props.user.token);
         
         await this.fetchFavorites();
@@ -88,12 +90,12 @@ export default class Search_Page extends Component {
         if (!this.props.user.token) return true;
         
        const isIsAFavorite = this.state.favorites.find(favorite => favorite.name === location.name);
-
+       console.log(location, this.state.favorites);
         return Boolean(isIsAFavorite);
     }
 
     render() {
-        console.log(this.state);
+        console.log(this.props);
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
