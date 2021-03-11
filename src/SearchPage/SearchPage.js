@@ -26,7 +26,7 @@ export default class Search_Page extends Component {
                 locations: locations,
                 favorites: favorites
             })
-        }, 1500);
+        }, 100);
   }
     
      fetchFavorites = async () => {
@@ -81,7 +81,7 @@ export default class Search_Page extends Component {
             city: faveDog.location.city,
             zip_code: faveDog.location.zip_code,
             state: faveDog.location.state,
-            display_address: faveDog.location.display_address,
+            display_address: faveDog.location.display_address.join(', '),
             business_id: faveDog.id,
         }, this.props.user.token);
         
