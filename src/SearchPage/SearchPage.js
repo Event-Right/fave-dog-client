@@ -26,7 +26,7 @@ export default class Search_Page extends Component {
                 locations: locations,
                 favorites: favorites
             })
-        }, 100);
+        }, 1500);
   }
     
      fetchFavorites = async () => {
