@@ -12,59 +12,71 @@ export default class favorites extends Component {
   componentDidMount = async () => {
     this.setState({
       loading: true,
-    })
+    });
 
     const favorites = await getFavorites(this.props.token);
-  
+
     setTimeout(() => {
       this.setState({
         loading: false,
         favorites: favorites,
       });
-    }, 100);
-
+    }, 1500);
   };
 
   handleDelete = async (id) => {
     await deleteFavorites(this.props.token, id);
     const favorites = await getFavorites(this.props.token);
     this.setState({
-      favorites
-    })
-  }
+      favorites,
+    });
+  };
 
-  handleDetailsClick = async (faveDog) =>{
+  handleDetailsClick = async (faveDog) => {
     this.props.handleID(faveDog.business_id);
-    console.log(faveDog);
-    this.props.history.push('/details')
-}
+    this.props.history.push('/details');
+  };
+
+
+  
+
+
 
   render() {
-
     return (
       <div>
-        <h3 className='title' >Your Favorite Hot Dog Locations</h3>
-        { this.state.loading && <Spinner />}
-        <div className='list'>
+        <h3 className="title">Your Favorite Hot Dog Locations</h3>
+        {this.state.loading && <Spinner />}
+        <div className="list">
           {this.state.favorites.map((fave) => (
-            <div className='listItem'>
-              <img className='itemImg' src={fave.image_url} alt={fave.name} />
-              <div className='label1'>
+            <div className="listItem">
+              <img className="itemImg" src={fave.image_url} alt={fave.name} />
+              <div className="label1">
                 <h3>Name</h3>
                 <h3>{fave.name}</h3>
               </div>
-              <div className='label2' key={`${fave.business_id}`}>    
+              <div className="label2" key={`${fave.business_id}`}>
                 <h3>Address</h3>
                 <p>{fave.display_address}</p>
               </div>
-              <div className='label3'>
+              <div className="label3">
                 <h3>Rating</h3>
                 <p>{fave.rating}</p>
               </div>
-              <div className='theButtons'>
-                  <button className='deleteButton' onClick={() => this.handleDelete(fave.id)}><span>Delete </span></button>
-                  <button className='deleteButton' onClick={() => this.handleDetailsClick(fave)}>Doggone Details </button>
-                </div>
+              <div className="theButtons">
+                <button
+                  className="deleteButton"
+                  onClick={() => this.handleDelete(fave.id)}
+                >
+                  <span>Delete </span>
+                </button>
+                <button
+                  className="deleteButton"
+                  onClick={() => this.handleDetailsClick(fave)}
+                >
+                  Doggone Details{' '}
+                </button>
+              </div>
             </div>
           ))}
         </div>

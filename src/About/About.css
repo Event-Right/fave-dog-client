@@ -1,5 +1,24 @@
+.title {
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bolder;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.interview {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 20px;
+  width: auto;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(255, 236, 66, 0.918);
+}
+
 .aboutBody {
   text-align: center;
+  padding: 50px;
 }
 
 .bio-list {
@@ -17,6 +36,26 @@
   border-radius: 10px;
   margin: 5px;
   padding: 10px;
+  font-family: Arial;
+  font-size: 20px;
+  background-color: rgba(230, 222, 180, 0.582);
+  color: black;
+}
+
+.bio {
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: rgb(241, 228, 214);
+  margin: 7px;
+  height: 200px;
+  width: 295px;
+}
+
+.name {
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bolder;
+  color: black;
 }
 
 .links {
@@ -24,7 +63,31 @@
   width: 30px;
 }
 
-.photo {
-  height: 200px;
-  width: 200px;
+.box {
+  position: relative;
+  width: 300px;
+  height: 295px;
+  display: inline-block;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid black;
+}
+
+.front-img {
+  width: 100%;
+  transition: all linear 0.7s;
+}
+
+img.hover-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+}
+.box:hover img {
+  opacity: 0;
+}
+
+.box:hover img.hover-img {
+  opacity: 1;
 }
