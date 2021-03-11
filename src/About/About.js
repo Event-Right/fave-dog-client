@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './About.css';
-import Slider from '../Components/Slider.js';
 
 export default class About extends Component {
   render() {
@@ -10,7 +9,10 @@ export default class About extends Component {
         <div className="bio-list">
           <div className="bio-item">
             <p className="name">Tyler Farris</p>
-            <img className="photo" src="./tyler.jpg" alt="tyler" />
+            <div className="box">
+              <img class="front-img" src="./tyler-hotdog.png" alt="front" />
+              <img class="hover-img" src="./tyler.jpg" alt="back" />
+            </div>
             <h4>Software Engineer</h4>
             <p className="bio">Hello my name is Tyler.</p>
             <div className="social-links">
@@ -34,7 +36,10 @@ export default class About extends Component {
           </div>
           <div className="bio-item">
             <p className="name">Eion Nelson</p>
-            <img className="photo" src="./eion.jpg" alt="eion" />
+            <div className="box">
+              <img class="front-img" src="./eion-hotdog.png" alt="front" />
+              <img class="hover-img" src="./eion.jpg" alt="back" />
+            </div>
             <h4>Software Engineer</h4>
             <p className="bio">Hello my name is Eion.</p>
             <div className="social-links">
@@ -58,7 +63,10 @@ export default class About extends Component {
           </div>
           <div className="bio-item">
             <p className="name">Edmond Zhan</p>
-            <img className="photo" src="./edmond.jpg" alt="edmond" />
+            <div className="box">
+              <img class="front-img" src="./edmond-hotdog.jpg" alt="front" />
+              <img class="hover-img" src="./edmond.jpg" alt="back" />
+            </div>
             <h4>Software Engineer</h4>
             <p className="bio">Hello my name is Edmond.</p>
             <div className="social-links">
@@ -82,7 +90,11 @@ export default class About extends Component {
           </div>
           <div className="bio-item">
             <p className="name">Minh Ngo</p>
-            <img className="photo" src="./minh.jpg" alt="minh" />
+            <div className="box">
+              <img class="front-img" src="./minh-hotdog.png" alt="front" />
+              <img class="hover-img" src="./minh.jpg" alt="back" />
+            </div>
+
             <h4>Software Engineer</h4>
             <p className="bio">Hello my name is Minh.</p>
             <div className="social-links">
@@ -105,7 +117,6 @@ export default class About extends Component {
             </div>
           </div>
         </div>
-        <Slider />
       </div>
     );
   }

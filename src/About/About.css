@@ -1,5 +1,12 @@
+.title {
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .aboutBody {
   text-align: center;
+  padding: 50px;
 }
 
 .bio-list {
@@ -17,6 +24,17 @@
   border-radius: 10px;
   margin: 5px;
   padding: 10px;
+  font-family: Arial;
+  font-size: 20px;
+  background-color: rgba(230, 222, 180, 0.582);
+  color: yellow;
+}
+
+.name {
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  color: yellow;
 }
 
 .links {
@@ -24,7 +42,31 @@
   width: 30px;
 }
 
-.photo {
-  height: 200px;
-  width: 200px;
+.box {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid black;
+}
+
+.front-img {
+  width: 100%;
+  transition: all linear 0.7s;
+}
+
+img.hover-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+}
+.box:hover img {
+  opacity: 0;
+}
+
+.box:hover img.hover-img {
+  opacity: 1;
 }
