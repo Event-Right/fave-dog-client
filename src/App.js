@@ -25,11 +25,11 @@ export default class App extends Component {
   handleID = (id) => {
     this.setState({ businessId: id });
     putIdInLocalStorage(id);
-    console.log(id);
+   
   };
 
   handleUserChange = (user) => {
-    console.log(user)
+  
     putUserInLocalStorage(user);
     const user1 = getUserFromLocalStorage();
 
@@ -48,7 +48,7 @@ export default class App extends Component {
 
   render() {
     const { user } = this.state;
-    console.log(user)
+   
     return (
       <div className="container">
         <Router>
