@@ -8,7 +8,7 @@ import {
   getUserFromLocalStorage,
   putUserInLocalStorage,
   putIdInLocalStorage,
-} from './Utils/local-storage-utils.js';
+} from './Utils/local-storage-utils.ts';
 
 import Header from './Components/Header';
 import Home from './Home/Home';
