@@ -20,9 +20,9 @@ export default class DetailsPage extends Component {
                     <h1>Doghouse Details</h1>
                     {
                     this.state.doghouse.map( details =>
-                        <div className= {style.location} key={`${details.name}`} >
+                        <div className= {styleD.location} key={`${details.name}`} >
                             <h2 className={styleD.busName}>{details.name}</h2>
-                            <img alt={details.name} src={details.image_url} />
+                            <img className='detailImage' alt={details.name} src={details.image_url} />
                             <div className= {styleD.dp}>
                             <p>Rating: {details.rating}</p>
                             <p># of reviews: {details.review_count}</p>
