@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { deleteFavorites, getFavorites } from '../Utils/Api_Utils.js';
+import { deleteFavorites, getFavorites } from '../Utils/Api_Utils.ts';
 import Spinner from '../Components/Spinner.js';
 import '../App.css';
 import './Favorite.css';
+
 export default class favorites extends Component {
   state = {
     favorites: [],
@@ -36,11 +37,6 @@ export default class favorites extends Component {
     this.props.handleID(faveDog.business_id);
     this.props.history.push('/details');
   };
-
-
-  
-
-
 
   render() {
     return (
