@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {  getDogHouse, } from '../Utils/Api_Utils.js';
+import {  getDogHouse, } from '../Utils/Api_Utils.ts';
 import {getIdFromLocalStorage } from '../local-storage-utils.js';
 import style from '../SearchPage/SearchPage.module.css';
 import styleD from '../DetailsPage/details.module.css';
