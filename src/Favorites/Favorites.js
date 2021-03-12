@@ -46,7 +46,9 @@ export default class favorites extends Component {
     return (
       <div>
         <h3 className="title">Your Favorite Hot Dog Locations</h3>
-        {this.state.loading && <Spinner />}
+        <div className='spinner'>
+          {this.state.loading && <Spinner />}
+        </div>
         <div className="list">
           {this.state.favorites.map((fave) => (
             <div className="listItem">
