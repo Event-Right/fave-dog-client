@@ -6,7 +6,6 @@ export async function searchLocations(search: string, sortBy: string) {
   const location = await request.get(
     `${URL}/dogs?location=${search}&sort_by=${sortBy}`
   );
-
   return location.body;
 }
 

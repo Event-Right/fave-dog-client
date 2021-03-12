@@ -29,6 +29,7 @@ You simply need to just go to the netlify site and you're good to go!
   * `npm i`
   * `react`
   * `react-router-dom`
+  * `TypeScript`
 
 ---
 ### API Endpoint Example

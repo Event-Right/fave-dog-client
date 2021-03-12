@@ -1,5 +1,6 @@
-export const USER = 'USER';
-export const ID = 'ID';
+export const USER: string = 'USER';
+export const ID: string = 'ID';
+
 
 export function getUserFromLocalStorage() {
   const user = localStorage.getItem(USER);
@@ -13,7 +14,7 @@ export function getUserFromLocalStorage() {
   };
 }
 
-export function putUserInLocalStorage(user) {
+export function putUserInLocalStorage(user: object) {
   localStorage.setItem(USER, JSON.stringify(user));
 }
 
@@ -22,6 +23,6 @@ export function getIdFromLocalStorage() {
   if (id) return JSON.parse(id);
 }
 
-export function putIdInLocalStorage(id) {
+export function putIdInLocalStorage(id: number) {
   localStorage.setItem(ID, JSON.stringify(id));
 }
