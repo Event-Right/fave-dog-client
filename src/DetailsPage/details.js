@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {  getDogHouse, } from '../Utils/Api_Utils.ts';
-import {getIdFromLocalStorage } from '../Utils/local-storage-utils.js';
+import { getIdFromLocalStorage } from '../Utils/local-storage-utils.js';
 import styleD from '../DetailsPage/details.module.css';
 export default class DetailsPage extends Component {
     state = {
