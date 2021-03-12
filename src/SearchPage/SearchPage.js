@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import { getLocations, addFavorite, getFavorites, searchLocations } from '../Utils/Api_Utils.ts'
 import Spinner from '../Components/Spinner.js';

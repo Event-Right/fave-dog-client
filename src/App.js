@@ -19,12 +19,10 @@ import DetailsPage from './DetailsPage/details.js';
 
 export default class App extends Component {
   state = {
-    user: getUserFromLocalStorage(),
-    businessId: '',
+    user: getUserFromLocalStorage()
   };
 
   handleID = (id) => {
-    this.setState({ businessId: id });
     putIdInLocalStorage(id);
   };
 
@@ -91,7 +89,7 @@ export default class App extends Component {
               exact
               render={(routerProps) => (
                 <DetailsPage
-                  businessId={this.state.businessId}
+                  
                   {...routerProps}
                 />
               )}
