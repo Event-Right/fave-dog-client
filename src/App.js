@@ -8,7 +8,7 @@ import {
   getUserFromLocalStorage,
   putUserInLocalStorage,
   putIdInLocalStorage,
-} from './local-storage-utils.js';
+} from './Utils/local-storage-utils.ts';
 
 import Header from './Components/Header';
 import Home from './Home/Home';
@@ -22,19 +22,20 @@ export default class App extends Component {
     user: getUserFromLocalStorage(),
     businessId: '',
   };
+
   handleID = (id) => {
     this.setState({ businessId: id });
     putIdInLocalStorage(id);
-   
   };
 
   handleUserChange = (user) => {
-  
     putUserInLocalStorage(user);
     const user1 = getUserFromLocalStorage();
 
-    this.setState({ user: user1 }
-)  };
+    this.setState({
+      user: user1 
+    })
+  };
 
   handleLogOut = () => {
     this.handleUserChange({
@@ -43,12 +44,10 @@ export default class App extends Component {
       token: '',
       name: '',
     });
-
   };
 
   render() {
     const { user } = this.state;
-   
     return (
       <div className="container">
         <Router>

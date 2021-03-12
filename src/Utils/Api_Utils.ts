@@ -1,9 +1,6 @@
 import * as request from 'superagent';
 
-
-
 const URL = 'https://hidden-fjord-82693.herokuapp.com';
-//https://hidden-fjord-82693.herokuapp.com
 
 export async function searchLocations(search: string, sortBy: string) {
   const location = await request.get(
@@ -14,10 +11,13 @@ export async function searchLocations(search: string, sortBy: string) {
 
 export async function getLocations() {
   const event = await request.get(`${URL}/dogs`);
+  
   return event.body;
 }
+
 export async function getDogHouse(id: string) {
   const DogHouse = await request.get(`${URL}/dogs/${id}`);
+
   return DogHouse.body;
 }
 
@@ -40,12 +40,13 @@ export async function signUpUser(email: string, password: string, name: string) 
 
   return response.body;
 }
+
 export async function addFavorite(location: string, token: string) {
-  
   const response = await request
     .post(`${URL}/api/favorites`)
     .set('Authorization', token)
     .send(location);
+
   return response.body;
 }
 

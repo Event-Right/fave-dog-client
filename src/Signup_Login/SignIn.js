@@ -22,13 +22,11 @@ class SignIn extends Component {
   };
 
   render() {
- 
     // if (this.state.user === true) {
     //   return <Redirect to="/search" />;
     // }
     return (
       <div className={style.containerDiv}>
-        
         <form className={style.form} onSubmit={this.handleSubmit}>
           <h3>Sign In</h3>
           <label>
