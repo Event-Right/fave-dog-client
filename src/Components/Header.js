@@ -21,7 +21,7 @@ export default class Header extends Component {
           <NavLink className={link} to="/about">
             <p>About</p>
           </NavLink>
-          <p>Lets Find a Dog  {name}</p>
+          <p>Lets Find Your FaveDog  {name}</p>
           
           {user && token &&
             <>
