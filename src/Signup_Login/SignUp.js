@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { signUpUser } from '../Utils/Api_Utils.js';
+import { signUpUser } from '../Utils/Api_Utils.ts';
 import { withRouter } from 'react-router-dom';
 import style from './Auth.module.css';
 class SignUp extends Component {
@@ -25,8 +25,6 @@ class SignUp extends Component {
   };
 
   render() {
-    console.log(this.state)
-    console.log(this.props)
     // if (this.state.user === true) {
     //   return <Redirect to="/search" />;
     // }
@@ -48,7 +46,6 @@ class SignUp extends Component {
               type='password'
               value={this.state.password}
               onChange={this.handlePassword}
-              
             />
           </label>
           <button>Submit</button>

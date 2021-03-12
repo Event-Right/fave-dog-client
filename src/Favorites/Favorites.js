@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { deleteFavorites, getFavorites } from '../Utils/Api_Utils.js';
+import { deleteFavorites, getFavorites } from '../Utils/Api_Utils.ts';
 import Spinner from '../Components/Spinner.js';
 import '../App.css';
 import './Favorite.css';
+
 export default class favorites extends Component {
   state = {
     favorites: [],
@@ -37,16 +38,13 @@ export default class favorites extends Component {
     this.props.history.push('/details');
   };
 
-
-  
-
-
-
   render() {
     return (
       <div>
         <h3 className="title">Your Favorite Hot Dog Locations</h3>
-        {this.state.loading && <Spinner />}
+        <div className='spinner'>
+          {this.state.loading && <Spinner />}
+        </div>
         <div className="list">
           {this.state.favorites.map((fave) => (
             <div className="listItem">

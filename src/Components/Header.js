@@ -21,7 +21,7 @@ export default class Header extends Component {
           <NavLink className={style.link} to="/about">
             <p>About</p>
           </NavLink>
-          
+          <p>Lets Find a Dog  {this.props.user.name}</p>
           {
             this.props.user && this.props.user.token &&
             <>
@@ -34,7 +34,7 @@ export default class Header extends Component {
               
             </>
           }
-          <p>{this.props.user.name}</p>
+          
         </div>
       </div>
     );

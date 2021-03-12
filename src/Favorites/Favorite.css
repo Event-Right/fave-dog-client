@@ -61,6 +61,13 @@
   grid-column: 4 / 5;
 }
 
+.spinner{
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 500px;
+}
+
 .theButtons{
   display: grid;
   justify-content: end;
