@@ -10,7 +10,6 @@
     background-color: rgb(148, 202, 247);
     margin: 0;
     margin-bottom: 10px;
-
 }
 
 .form {
@@ -35,7 +34,7 @@
     width: 100px;
     position:absolute;
     right: 75px;
-    bottom: 20px;
+    bottom: 15px;
     height: 25px;
     border-radius: 15px;
 }
@@ -43,5 +42,4 @@
 .form button:hover {
     background:rgba(247, 123, 123, 0.678);
     color: yellow;
-
 }

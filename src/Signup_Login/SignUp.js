@@ -25,8 +25,6 @@ class SignUp extends Component {
   };
 
   render() {
-    console.log(this.state)
-    console.log(this.props)
     // if (this.state.user === true) {
     //   return <Redirect to="/search" />;
     // }
@@ -48,7 +46,6 @@ class SignUp extends Component {
               type='password'
               value={this.state.password}
               onChange={this.handlePassword}
-              
             />
           </label>
           <button>Submit</button>
