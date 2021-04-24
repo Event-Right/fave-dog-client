@@ -46,25 +46,33 @@ export default class favorites extends Component {
           {this.state.loading && <Spinner />}
         </div>
         <div className="list">
-          {this.state.favorites.map((fave) => (
-            <div className="listItem">
-              <img className="itemImg" src={fave.image_url} alt={fave.name} />
+          {this.state.favorites.map((fave) => {
+            const { 
+              name, 
+              id, 
+              business_id, 
+              display_address, 
+              rating,
+             } = fave;
+            
+            return <div className="listItem">
+              <img className="itemImg" src={c} alt={name} />
               <div className="label1">
                 <h3>Name</h3>
-                <h3>{fave.name}</h3>
+                <h3>{name}</h3>
               </div>
-              <div className="label2" key={`${fave.business_id}`}>
+              <div className="label2" key={`${business_id}`}>
                 <h3>Address</h3>
-                <p>{fave.display_address}</p>
+                <p>{display_address}</p>
               </div>
               <div className="label3">
                 <h3>Rating</h3>
-                <p>{fave.rating}</p>
+                <p>{rating}</p>
               </div>
               <div className="theButtons">
                 <button
                   className="deleteButton"
-                  onClick={() => this.handleDelete(fave.id)}
+                  onClick={() => this.handleDelete(id)}
                 >
                   <span>Delete </span>
                 </button>
@@ -76,6 +84,7 @@ export default class favorites extends Component {
                 </button>
               </div>
             </div>
+          }
           ))}
         </div>
       </div>
