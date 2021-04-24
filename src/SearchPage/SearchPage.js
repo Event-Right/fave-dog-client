@@ -24,9 +24,10 @@ export default class Search_Page extends Component {
     setTimeout(() => {
         this.setState({
             loading: false,
-            locations: locations,
-            favorites: favorites
+            locations,
+            favorites
         })
+        // why wait an additional 1.5 seconds after the fetch is done?
     }, 1500);
   }
     
@@ -47,9 +48,7 @@ export default class Search_Page extends Component {
     makeSearch = async () => {
         const locations = await searchLocations(this.state.search, this.state.sort_by);
        
-        this.setState({
-            locations: locations,
-        });
+        this.setState({ locations });
     }
 
     handleSortBy = async (e) => {
@@ -65,20 +64,8 @@ export default class Search_Page extends Component {
 
     handleFavoritesClick = async (faveDog) => {    
         await addFavorite({
-            name: faveDog.name, 
-            categories: faveDog.categories, 
-            review_count: faveDog.review_count, 
-            price: faveDog.price, 
-            transactions: faveDog.transactions, 
-            url: faveDog.url, 
-            image_url: faveDog.image_url, 
-            is_closed: faveDog.is_closed, 
-            rating: faveDog.rating,
-            distance: faveDog.distance, 
-            display_phone: faveDog.display_phone,  
-            city: faveDog.location.city,
-            zip_code: faveDog.location.zip_code,
-            state: faveDog.location.state,
+            ...faveDog,
+            ...faveDog.location,
             display_address: faveDog.location.display_address.join(', '),
             business_id: faveDog.id,
         }, this.props.user.token);
@@ -87,6 +74,7 @@ export default class Search_Page extends Component {
     }
 
     isAFavorite = (location) => {
+        // are they always favorites if the user is not logged in?
         if (!this.props.user.token) return true;
         
         const isIsAFavorite = this.state.favorites.find(favorite => favorite.name === location.name);
